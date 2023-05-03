@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginBottom="20dp"
+        android:layout_marginTop="20dp">
+        <ImageView
+            android:id="@+id/previousMonthAction"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/padding"
+            android:src="@drawable/ic_arrow_left"/>
+<!--        <Button-->
+<!--            android:id="@+id/previousMonthAction"-->
+<!--            android:layout_width="0dp"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_weight="1"-->
+<!--            android:text="@string/back"-->
+<!--            android:textColor="@color/calendar_blue"-->
+<!--            android:background="@color/white"-->
+<!--            android:textStyle="bold"-->
+<!--            android:onClick="previousMonthAction"-->
+<!--            android:textSize="20sp"/>-->
+
+        <TextView
+            android:id="@+id/monthYearTV"
+            android:layout_width="0dp"
+            android:layout_weight="4"
+            android:layout_height="wrap_content"
+            android:fontFamily="arial"
+            android:text="Feb 2021"
+            android:textSize="20sp"
+            android:gravity="center"
+            android:textColor="@color/black"/>
+
+        <ImageView
+            android:id="@+id/nextMonthAction"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/padding"
+            android:src="@drawable/ic_arrow_right"/>
+<!--        <Button-->
+<!--            android:id="@+id/nextMonthAction"-->
+<!--            android:layout_width="0dp"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_weight="1"-->
+<!--            android:text="@string/forward"-->
+<!--            android:textColor="@color/calendar_blue"-->
+<!--            android:background="@color/white"-->
+<!--            android:textStyle="bold"-->
+<!--            android:onClick="nextMonthAction"-->
+<!--            android:textSize="20sp"/>-->
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="SUN"
+            android:textColor="@color/red_700"
+            android:textAlignment="center"
+            android:textSize="16sp"
+            android:background="@drawable/text_line"/>
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="MON"
+            android:textColor="@color/calendar_gray"
+            android:textAlignment="center"
+            android:textSize="16sp"
+            android:background="@drawable/text_line"/>
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="TUE"
+            android:textColor="@color/calendar_gray"
+            android:textAlignment="center"
+            android:textSize="16sp"
+            android:background="@drawable/text_line"/>
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="WED"
+            android:textColor="@color/calendar_gray"
+            android:textAlignment="center"
+            android:textSize="16sp"
+            android:background="@drawable/text_line"/>
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="THUR"
+            android:textColor="@color/calendar_gray"
+            android:textAlignment="center"
+            android:textSize="16sp"
+            android:background="@drawable/text_line"/>
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="FRI"
+            android:textColor="@color/calendar_gray"
+            android:textAlignment="center"
+            android:textSize="16sp"
+            android:background="@drawable/text_line"/>
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="SAT"
+            android:textColor="@color/calendar_blue"
+            android:textAlignment="center"
+            android:textSize="16sp"
+            android:background="@drawable/text_line"/>
+
+
+    </LinearLayout>
+
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/calendarRecyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:divider="@android:color/black"
+        android:dividerHeight="10dp"
+        android:listDivider="@null"
+        android:showDividers="middle"
+        />
+
+</LinearLayout>
+
+
+
+
+
+
+
+
+
+
+
+
+
