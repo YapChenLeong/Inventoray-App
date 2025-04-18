@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <attr name="pickerBackgroundColor" format="color" />
+    <attr name="pickerTextColor" format="color" />
+    <attr name="dialogBackgroundColor" format="color" />
+</resources>

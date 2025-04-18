@@ -5,23 +5,196 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_margin="@dimen/margin"
-        tools:context=".views.ItemListFragment"
+    tools:context=".views.ItemListFragment"
     android:orientation="vertical">
 
+    <View
+        android:id="@+id/viewHeaderBackground"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_125sdp"
+        android:background="#0056BA"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <TextView
-        android:id="@+id/label_name"
-        android:layout_width="0dp"
+        android:id="@+id/textCashFlow"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/item"
-        android:textSize="16sp"
-        android:gravity="center_horizontal"
-        android:padding="8dp"
-        app:layout_constraintWidth_percent="0.4"
+        android:text="Balance"
+        android:textColor="@color/white"
+        android:textSize="@dimen/_12ssp"
+        android:layout_marginTop="@dimen/_5sdp"
+        android:textStyle="bold"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintBottom_toBottomOf="@+id/label_quantity"
-        app:layout_constraintEnd_toStartOf="@+id/label_price"/>
+        app:layout_constraintEnd_toEndOf="parent"
+       />
+
+    <TextView
+        android:id="@+id/textBalanceTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_16sdp"
+        android:layout_marginLeft="@dimen/_16sdp"
+        android:layout_marginTop="@dimen/_16sdp"
+        android:text="MYR 10,000"
+        android:textColor="@color/white"
+        android:textSize="@dimen/_20ssp"
+        android:textStyle="bold"
+        app:layout_constraintTop_toBottomOf="@+id/textCashFlow"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        />
+
+    <ImageView
+        android:id="@+id/previousMonthAction"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/arrow_left_white"
+        android:layout_marginRight="@dimen/_16sdp"
+        app:layout_constraintEnd_toStartOf="@+id/monthYearTV"
+        app:layout_constraintTop_toTopOf="@+id/monthYearTV"
+        app:layout_constraintBottom_toBottomOf="@+id/monthYearTV"/>
+    <TextView
+        android:id="@+id/monthYearTV"
+        android:layout_width="wrap_content"
+        android:layout_weight="4"
+        android:layout_height="wrap_content"
+        android:fontFamily="arial"
+        android:text="Aug 2023"
+        android:layout_marginTop="@dimen/_5sdp"
+        android:textSize="@dimen/_12ssp"
+        android:gravity="center"
+        android:textColor="@color/white"
+        app:layout_constraintTop_toBottomOf="@+id/textBalanceTV"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <ImageView
+        android:id="@+id/nextMonthAction"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/arrow_right_white"
+        android:layout_marginLeft="@dimen/_16sdp"
+        app:layout_constraintStart_toEndOf="@+id/monthYearTV"
+        app:layout_constraintTop_toTopOf="@+id/monthYearTV"
+        app:layout_constraintBottom_toBottomOf="@+id/monthYearTV"/>
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/cardHeader"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_16sdp"
+        android:layout_marginEnd="@dimen/_16sdp"
+        app:cardBackgroundColor="@color/white"
+        app:cardCornerRadius="@dimen/_6sdp"
+        app:layout_constraintBottom_toBottomOf="@id/viewHeaderBackground"
+        app:layout_constraintTop_toBottomOf="@id/viewHeaderBackground">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintCard"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/_3sdp">
+
+            <TextView
+                android:id="@+id/textTitleEarn"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="Income"
+                android:fontFamily="sans-serif"
+                android:textColor="@color/calendar_gray"
+                android:gravity="center_horizontal"
+                app:layout_constraintWidth_percent="0.5"
+                android:textSize="@dimen/_10ssp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/textTitleDeduct" />
+
+            <View
+                android:layout_width="1dp"
+                android:layout_height="0dp"
+                android:orientation="horizontal"
+                android:background="@android:color/darker_gray"
+                app:layout_constraintTop_toTopOf="@+id/textTitleEarn"
+                app:layout_constraintStart_toEndOf="@+id/textTitleEarn"
+                app:layout_constraintEnd_toStartOf="@+id/textTitleDeduct"
+                app:layout_constraintBottom_toBottomOf="@+id/textTitleEarn"
+                android:visibility="visible" />
+
+            <TextView
+                android:id="@+id/textEarn"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="10,000"
+                android:gravity="center_horizontal"
+                android:src="@drawable/border_right"
+                app:layout_constraintWidth_percent="0.5"
+                android:textColor="#3B72FF"
+                android:textSize="@dimen/_16ssp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/textTitleEarn"
+                app:layout_constraintEnd_toStartOf="@+id/textDeduct" />
+
+            <TextView
+                android:id="@+id/textTitleDeduct"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="Expense"
+                android:gravity="center_horizontal"
+                app:layout_constraintWidth_percent="0.5"
+                android:fontFamily="sans-serif"
+                android:textColor="@color/calendar_gray"
+                android:textSize="@dimen/_10ssp"
+                app:layout_constraintStart_toEndOf="@id/textTitleEarn"
+                app:layout_constraintTop_toTopOf="parent"
+                 />
+
+            <View
+                android:layout_width="1dp"
+                android:layout_height="0dp"
+                android:orientation="horizontal"
+                android:background="@android:color/darker_gray"
+                app:layout_constraintTop_toTopOf="@+id/textEarn"
+                app:layout_constraintStart_toEndOf="@+id/textEarn"
+                app:layout_constraintEnd_toStartOf="@+id/textDeduct"
+                app:layout_constraintBottom_toBottomOf="@+id/textEarn"
+                android:visibility="visible" />
+
+            <TextView
+                android:id="@+id/textDeduct"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="10,000"
+                android:gravity="center_horizontal"
+                app:layout_constraintWidth_percent="0.5"
+                android:textColor="#FF0000"
+                android:textSize="@dimen/_16ssp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toEndOf="@id/textTitleEarn"
+                app:layout_constraintTop_toBottomOf="@+id/textTitleDeduct" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </com.google.android.material.card.MaterialCardView>
+
+<!--    <TextView-->
+<!--        android:id="@+id/label_name"-->
+<!--        android:layout_width="0dp"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:text="@string/item"-->
+<!--        android:textSize="13sp"-->
+<!--        android:gravity="left"-->
+<!--        android:paddingLeft="11dp"-->
+<!--        android:paddingTop="2dp"-->
+<!--        android:paddingBottom="2dp"-->
+<!--        app:layout_constraintWidth_percent="0.4"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/cardHeader"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintBottom_toBottomOf="@+id/label_quantity"-->
+<!--        app:layout_constraintEnd_toStartOf="@+id/label_price"/>-->
 <!--    <TextView-->
 <!--        android:id="@+id/item_name"-->
 <!--        style="@style/Widget.Inventory.Header"-->
@@ -32,18 +205,18 @@
 <!--        app:layout_constraintStart_toStartOf="parent"-->
 <!--        app:layout_constraintTop_toTopOf="parent" />-->
 
-    <TextView
-        android:id="@+id/label_price"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:text="@string/price"
-        android:textSize="16sp"
-        android:gravity="center_horizontal"
-        android:padding="8dp"
-        app:layout_constraintWidth_percent="0.3"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="@+id/label_quantity"
-        app:layout_constraintStart_toEndOf="@id/label_name"/>
+<!--    <TextView-->
+<!--        android:id="@+id/label_price"-->
+<!--        android:layout_width="0dp"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:text="@string/last_purchase"-->
+<!--        android:textSize="13sp"-->
+<!--        android:gravity="center_horizontal"-->
+<!--        android:padding="2dp"-->
+<!--        app:layout_constraintWidth_percent="0.3"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/cardHeader"-->
+<!--        app:layout_constraintBottom_toBottomOf="@+id/label_quantity"-->
+<!--        app:layout_constraintStart_toEndOf="@id/label_name"/>-->
 <!--    <TextView-->
 <!--        android:id="@+id/item_price"-->
 <!--        style="@style/Widget.Inventory.Header"-->
@@ -56,18 +229,18 @@
 <!--        app:layout_constraintStart_toEndOf="@+id/item_name"-->
 <!--        app:layout_constraintTop_toTopOf="parent" />-->
 
-    <TextView
-        android:id="@+id/label_quantity"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:text="@string/quantity_in_stock"
-        android:textSize="16sp"
-        android:gravity="center_horizontal"
-        android:padding="8dp"
-        app:layout_constraintWidth_percent="0.3"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toEndOf="@id/label_price"
-        app:layout_constraintEnd_toEndOf="parent"/>
+<!--    <TextView-->
+<!--        android:id="@+id/label_quantity"-->
+<!--        android:layout_width="0dp"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:text="@string/stock_changes"-->
+<!--        android:textSize="13sp"-->
+<!--        android:gravity="center_horizontal"-->
+<!--        android:padding="2dp"-->
+<!--        app:layout_constraintWidth_percent="0.3"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/cardHeader"-->
+<!--        app:layout_constraintStart_toEndOf="@id/label_price"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"/>-->
 <!--    <TextView-->
 <!--        android:id="@+id/item_quantity"-->
 <!--        style="@style/Widget.Inventory.Header"-->
@@ -87,19 +260,21 @@
         app:layout_constraintBottom_toTopOf="@+id/parent_recycle_view"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/label_quantity" />
+        app:layout_constraintTop_toBottomOf="@+id/cardHeader" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/parent_recycle_view"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        app:layout_constraintTop_toBottomOf="@id/divider"
         android:scrollbars="vertical"
+        android:padding="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
-<!--    <androidx.recyclerview.widget.RecyclerView-->
+        app:layout_constraintTop_toBottomOf="@id/divider" />
+    <!--    <androidx.recyclerview.widget.RecyclerView-->
 <!--        android:id="@+id/recyclerView"-->
 <!--        android:layout_width="match_parent"-->
 <!--        android:layout_height="wrap_content"-->
@@ -108,16 +283,16 @@
 <!--        app:layout_constraintStart_toStartOf="parent"-->
 <!--        app:layout_constraintTop_toBottomOf="@+id/divider" />-->
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/floatingActionButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="@dimen/margin_between_elements"
-        android:layout_marginBottom="@dimen/margin_between_elements"
-        android:contentDescription="@string/add_new_item"
-        android:src="@android:drawable/ic_input_add"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:tint="@android:color/white" />
+<!--    <com.google.android.material.floatingactionbutton.FloatingActionButton-->
+<!--        android:id="@+id/floatingActionButton"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginEnd="@dimen/margin_between_elements"-->
+<!--        android:layout_marginBottom="@dimen/margin_between_elements"-->
+<!--        android:contentDescription="@string/add_new_item"-->
+<!--        android:src="@android:drawable/ic_input_add"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:tint="@android:color/white" />-->
 
 </androidx.constraintlayout.widget.ConstraintLayout>

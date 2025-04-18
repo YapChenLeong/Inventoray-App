@@ -33,6 +33,11 @@
             app:destination="@id/onBoardViewPagerFragment"
             app:popUpTo="@id/splashFragment"
             app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_splashFragment_to_itemListFragment"
+            app:destination="@id/itemListFragment"
+            app:popUpTo="@id/splashFragment"
+            app:popUpToInclusive="true"/>
     </fragment>
     <fragment
         android:id="@+id/TabsViewPagerFragment"
@@ -45,6 +50,9 @@
         <action
             android:id="@+id/action_viewPagerFragment_to_addItemFragment"
             app:destination="@id/addItemFragment" />
+        <action
+            android:id="@+id/action_TabsViewPagerFragment_to_chooseItemFragment"
+            app:destination="@id/chooseItemFragment" />
     </fragment>
     <fragment
         android:id="@+id/itemDetailFragment"
@@ -90,9 +98,14 @@
     </fragment>
     <fragment
         android:id="@+id/statisticFragment"
-        android:name="com.example.inventory.StatisticFragment"
+        android:name="com.example.inventory.views.StatisticFragment"
         android:label="fragment_statistic"
-        tools:layout="@layout/fragment_statistic" />
+        tools:layout="@layout/fragment_statistic" >
+        <action
+            android:id="@+id/action_statisticFragment_to_groupItemListFragment"
+            app:destination="@id/groupItemListFragment"/>
+
+    </fragment>
     <fragment
         android:id="@+id/itemListFragment"
         android:name="com.example.inventory.views.ItemListFragment"
@@ -104,6 +117,159 @@
         <action
             android:id="@+id/action_itemListFragment_to_itemDetailFragment"
             app:destination="@id/itemDetailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/groupItemListFragment"
+        android:name="com.example.inventory.views.GroupItemListFragment"
+        android:label="{countryName}"
+        tools:layout="@layout/fragment_group_item_list" >
+        <argument
+            android:name="item_list_data"
+            app:argType="com.example.inventory.adapters.ItemListData" />
+        <argument
+            android:name="countryName"
+            app:argType="string" />
+        <action
+            android:id="@+id/action_groupItemListFragment_to_itemDetailFragment"
+            app:destination="@id/itemDetailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="com.example.inventory.views.ProfileFragment"
+        tools:layout="@layout/fragment_profile" />
+    <fragment
+        android:id="@+id/chooseItemFragment"
+        android:name="com.example.inventory.views.ChooseItemFragment"
+        android:label="Transaction Categories"
+        tools:layout="@layout/fragment_choose_item">
+        <action
+            android:id="@+id/action_chooseItemFragment_to_addCategoryFragment"
+            app:destination="@id/addCategoryFragment" />
+        <action
+            android:id="@+id/action_chooseItemFragment_to_categorySettingTabsFragment"
+            app:destination="@id/categorySettingTabsFragment" />
+        <action
+            android:id="@+id/action_chooseItemFragment_to_TabsViewPagerFragment"
+            app:destination="@id/TabsViewPagerFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/addCategoryFragment"
+        android:name="com.example.inventory.views.AddCategoryFragment"
+        tools:layout="@layout/fragment_add_category"
+        android:label="{title}" >
+        <argument
+            android:name="title"
+            app:argType="string" />
+        <argument
+            android:name="categoryData"
+            app:argType="com.example.inventory.data.CategorySettings"/>
+
+        <action
+            android:id="@+id/action_addCategoryFragment_to_chooseItemFragment"
+            app:destination="@id/chooseItemFragment" />
+        <action
+            android:id="@+id/action_addCategoryFragment_to_chooseItemTabsFragment"
+            app:destination="@id/chooseItemTabsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/categorySettingTabsFragment"
+        android:name="com.example.inventory.views.CategorySettingTabsFragment"
+        android:label="{title}"
+        tools:layout="@layout/fragment_category_setting_tabs">
+        <argument
+            android:name="title"
+            app:argType="string" />
+        <action
+            android:id="@+id/action_categorySettingTabsFragment_to_expenseSubCategoryFragment"
+            app:destination="@id/expenseSubCategoryFragment" />
+        <action
+            android:id="@+id/action_categorySettingTabsFragment_to_addCategoryFragment"
+            app:destination="@id/addCategoryFragment" />
+        <action
+            android:id="@+id/action_categorySettingTabsFragment_to_chooseItemFragment"
+            app:destination="@id/chooseItemFragment" />
+        <action
+            android:id="@+id/action_categorySettingTabsFragment_to_chooseItemTabsFragment"
+            app:destination="@id/chooseItemTabsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/expenseSubCategoryFragment"
+        android:name="com.example.inventory.views.ExpenseSubCategoryFragment"
+        android:label="{title}"
+        tools:layout="@layout/fragment_expense_sub_category">
+        <argument
+            android:name="expenseId"
+            app:argType="string"/>
+        <argument
+            android:name="title"
+            app:argType="string" />
+<!--        <argument-->
+<!--            android:name="sub_list_data"-->
+<!--            app:argType="com.example.inventory.data.SubCategoryListData"/>-->
+        <argument
+            android:name="main_category_name"
+            app:argType="string"/>
+        <action
+            android:id="@+id/action_expenseSubCategoryFragment_to_subCategoryItemFragment"
+            app:destination="@id/subCategoryItemFragment" />
+        <action
+            android:id="@+id/action_expenseSubCategoryFragment_to_categorySettingTabsFragment"
+            app:destination="@id/categorySettingTabsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/subCategoryItemFragment"
+        android:name="com.example.inventory.views.SubCategoryItemFragment"
+        android:label="{title}"
+        tools:layout="@layout/fragment_sub_category_item">
+        <argument
+            android:name="expenseId"
+            app:argType="string" />
+        <argument
+            android:name="title"
+            app:argType="string" />
+        <argument
+            android:name="main_category_name"
+            app:argType="string"/>
+        <argument
+            android:name="sub_category_name"
+            app:argType="string"/>
+        <action
+            android:id="@+id/action_subCategoryItemFragment_to_expenseSubCategoryFragment"
+            app:destination="@id/expenseSubCategoryFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/calendarItemFragment"
+        android:name="com.example.inventory.views.CalendarItemFragment"
+        android:label="fragment_calander_item"
+        tools:layout="@layout/fragment_calander_item">
+
+    </fragment>
+    <fragment
+        android:id="@+id/chooseItemTabsFragment"
+        android:name="com.example.inventory.views.ChooseItemTabsFragment"
+        android:label="Transaction Categories"
+        tools:layout="@layout/fragment_choose_item_tabs" >
+        <action
+            android:id="@+id/action_chooseItemTabsFragment_to_addCategoryFragment"
+            app:destination="@id/addCategoryFragment" />
+        <action
+            android:id="@+id/action_chooseItemTabsFragment_to_TabsViewPagerFragment"
+            app:destination="@id/TabsViewPagerFragment" />
+        <action
+            android:id="@+id/action_chooseItemTabsFragment_to_categorySettingTabsFragment"
+            app:destination="@id/categorySettingTabsFragment" />
+        <action
+            android:id="@+id/action_chooseItemTabsFragment_to_itemListFragment"
+            app:destination="@id/itemListFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/statisticTabsFragment"
+        android:name="com.example.inventory.views.StatisticTabsFragment"
+        android:label="fragment_statistic_tabs"
+        tools:layout="@layout/fragment_statistic_tabs" >
+        <action
+            android:id="@+id/action_statisticTabsFragment_to_groupItemListFragment"
+            app:destination="@id/groupItemListFragment" />
     </fragment>
 
 </navigation>

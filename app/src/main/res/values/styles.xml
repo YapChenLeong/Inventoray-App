@@ -16,6 +16,42 @@
 
 <resources>
 
+    <style name="DatePickerStyle" parent="Widget.MaterialDatePicker">
+        <item name="android:textAppearance">@style/TextAppearance.DatePicker</item>
+        <item name="android:background">?attr/pickerBackgroundColor</item>
+        <item name="highlighterColor">?attr/colorPrimary</item>
+        <item name="isShowHighlighter">true</item>
+        <item name="highlighterHeight">55dp</item>
+        <item name="fadeInAlpha">.3</item>
+        <item name="fadeOutAlpha">.7</item>
+        <item name="fadeInDuration">300</item>
+        <item name="fadeOutDuration">1000</item>
+        <item name="minYear">1995</item>
+        <item name="maxYear">2050</item>
+        <item name="defaultYear">2021</item>
+        <item name="defaultMonth">1</item>
+        <item name="defaultDay">1</item>
+        <item name="dateFormat">DD_MMM_YYYY</item>
+    </style>
+    <style name="TextAppearance.DatePicker" parent="@style/TextAppearance.MaterialDatePicker">
+        <item name="android:textSize">19sp</item>
+        <item name="android:textColor">?attr/pickerTextColor</item>
+    </style>
+
+    <style name="Picker.Dialog.Title" parent="@style/Base.MaterialDateTimePicker.Dialog.Title">
+        <item name="android:textAppearance">@style/TextAppearance.Picker.Dialog.Title</item>
+    </style>
+    <style name="TextAppearance.Picker.Dialog.Title" parent="@style/Base.TextAppearance.MaterialDateTimePicker.Dialog.Title">
+        <item name="android:textSize">20sp</item>
+    </style>
+
+    <!--    Set style for Date Picker dialog-->
+    <style name="ThemeOverlay.Dialog.DatePicker" parent="@style/ThemeOverlay.Dialog.MaterialDatePicker">
+        <item name="materialTimePickerViewStyle">@style/DatePickerStyle</item>
+        <item name="android:background">?attr/dialogBackgroundColor</item>
+        <item name="materialAlertDialogTitleTextStyle">@style/Picker.Dialog.Title</item>
+    </style>
+
 
     <style name="ThemeOverlay.App.DatePicker" parent="@style/ThemeOverlay.MaterialComponents.MaterialCalendar">
         <item name="colorPrimary">@color/purple_200</item>
@@ -33,21 +69,55 @@
 
     <style name="Widget.Inventory.ListItemName" parent="Widget.MaterialComponents.TextView">
         <item name="android:gravity">left</item>
+        <item name="android:textSize">13sp</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:textAppearance">?attr/textAppearanceBody1</item>
     </style>
 
     <style name="Widget.Inventory.ListItemPrice" parent="Widget.MaterialComponents.TextView">
-        <item name="android:gravity">center</item>
+        <item name="android:gravity">center_horizontal</item>
+        <item name="android:textSize">12sp</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:textAppearance">?attr/textAppearanceBody1</item>
     </style>
 
     <style name="Widget.Inventory.ListItemQuantity" parent="Widget.MaterialComponents.TextView">
-        <item name="android:gravity">center</item>
+        <item name="android:gravity">center_horizontal</item>
+        <item name="android:textSize">13sp</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:textAppearance">?attr/textAppearanceBody1</item>
         <item name="android:textColor">#FF0000</item>
+    </style>
+
+    <style name="Widget.Inventory.IncomePrice" parent="Widget.MaterialComponents.TextView">
+        <item name="android:gravity">center_horizontal</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textAppearance">?attr/textAppearanceBody1</item>
+    </style>
+
+    <style name="Widget.Inventory.ExpensePrice" parent="Widget.MaterialComponents.TextView">
+        <item name="android:gravity">center_horizontal</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textAppearance">?attr/textAppearanceBody1</item>
+        <item name="android:textColor">#FF0000</item>
+    </style>
+
+    <style name="Widget.Inventory.ExpensePriceRed" parent="Widget.MaterialComponents.TextView">
+        <item name="android:gravity">right</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textAppearance">?attr/textAppearanceBody1</item>
+        <item name="android:textColor">#FF0000</item>
+    </style>
+
+    <style name="Widget.Inventory.ExpensePriceGreen" parent="Widget.MaterialComponents.TextView">
+        <item name="android:gravity">right</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textAppearance">?attr/textAppearanceBody1</item>
+        <item name="android:textColor">#00C000</item>
     </style>
 
     <style name="Widget.Inventory.TextView" parent="Widget.MaterialComponents.TextView">
@@ -56,10 +126,29 @@
         <item name="android:textAppearance">@style/TextAppearance.AppCompat.Body1</item>
     </style>
 
+    <style name="Widget.Inventory.TextView2" parent="Widget.MaterialComponents.TextView">
+        <item name="android:textSize">13sp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textAppearance">@style/TextAppearance.AppCompat.Body1</item>
+    </style>
+
     <style name="Widget.Inventory.ListItemTextView" parent="Widget.MaterialComponents.TextView">
         <item name="android:gravity">center</item>
         <item name="android:layout_width">0dp</item>
         <item name="android:layout_height">48dp</item>
+        <item name="android:textAppearance">?attr/textAppearanceBody1</item>
+    </style>
+
+    <style name="Widget.Inventory.PercentageTextView" parent="Widget.MaterialComponents.TextView">
+        <item name="android:textSize">13sp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textAppearance">?attr/textAppearanceBody1</item>
+    </style>
+
+    <style name="Widget.Inventory.TotalPriceTextView" parent="Widget.MaterialComponents.TextView">
+        <item name="android:gravity">center</item>
+        <item name="android:layout_height">wrap_content</item>
         <item name="android:textAppearance">?attr/textAppearanceBody1</item>
     </style>
 
@@ -81,5 +170,56 @@
 
     <style name="CustomTabStyle" parent="TextAppearance.Design.Tab">
         <item name="android:textSize">10sp</item>
+    </style>
+
+    <!-- Base application theme. -->
+    <style name="Theme.Fab_Bottom_app_bar" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <item name="colorPrimary">#0F9D58</item>
+        <item name="colorPrimaryVariant">#0F9D58</item>
+        <item name="colorOnPrimary">#000</item>
+    </style>
+
+    <style name="DatePickerStyle.Second" parent="Widget.MaterialDatePicker">
+        <item name="highlighterColor">@color/O400</item>
+        <item name="highlighterHeight">55dp</item>
+        <item name="dateFormat">DD_MMMM_YYYY</item>
+    </style>
+
+    <style name="CustomNumberPicker" parent="Widget.MaterialDatePicker">
+        <item name="android:textColor">@color/O400</item>
+    </style>
+
+    <style name="AppTheme" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
+        <!-- Customize your theme here -->
+        <item name="colorPrimary">@color/appBlue</item>
+        <item name="colorPrimaryDark">@color/appBlue</item>
+        <item name="colorAccent">@color/appBlue</item>
+    </style>
+
+<!--    <style name="NumberPickerTheme" parent="Theme.AppCompat.Light">-->
+<!--        <item name="colorAccent">@android:color/white</item>-->
+<!--        <item name="colorControlNormal">@android:color/transparent</item>-->
+<!--        <item name="android:textColorPrimary">@android:color/black</item>-->
+<!--        <item name="android:background">@android:color/white</item>-->
+<!--        <item name="android:textSize">30sp</item>-->
+
+<!--        <item name="android:colorControlActivated">@color/black</item>-->
+
+<!--    </style>-->
+
+<!--    <style name="ModalBottomSheet" parent="Widget.MaterialComponents.BottomSheet.Modal">-->
+<!--        &lt;!&ndash; Apply attributes here &ndash;&gt;-->
+<!--    </style>-->
+
+<!--    <style name="ModalBottomSheetDialog" parent="ThemeOverlay.MaterialComponents.BottomSheetDialog">-->
+<!--        <item name="bottomSheetStyle">@style/ModalBottomSheet</item>-->
+<!--    </style>-->
+
+<!--    <style name="AppTheme" parent="Theme.MaterialComponents.*">-->
+<!--        <item name="bottomSheetDialogTheme">@style/ModalBottomSheetDialog</item>-->
+<!--    </style>-->
+
+    <style name="CustomBottomSheetDialog" parent="Theme.Design.BottomSheetDialog">
+        <item name="android:background">@android:color/transparent</item>
     </style>
 </resources>

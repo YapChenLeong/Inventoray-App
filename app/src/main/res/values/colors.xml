@@ -24,12 +24,23 @@
     <color name="red_700">#FFD32F2F</color>
 
     <color name="colorContainer">#EAEBEA</color>
-    <color name="colorAccent">#3B72FF</color>
+    <color name="colorContainer2">#FAFAFA</color>
+
 
 <!--OnBoarding Screen-->
-    <color name="blue">#7BCEFF</color>
 
     <color name="calendar_gray">#7f7f7f</color>
-    <color name="calendar_blue">#0000FF</color>
     <color name="calendar_black">#FF000000</color>
+
+    <color name="percentage_color_less_than_one">#FFA500</color>
+    <color name="percentage_color_greater_than_one">#00FF00</color>
+
+    <color name="modalBackground">#80000000</color>
+
+    <!--Blue Section-->
+    <color name="appBlue">#0056BA</color>
+    <color name="colorAccent">#3B72FF</color>
+    <color name="blue">#7BCEFF</color>
+    <color name="calendar_blue">#0000FF</color>
+
 </resources>

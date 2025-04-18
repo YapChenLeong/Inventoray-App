@@ -1,47 +1,178 @@
-<?xml version="1.0" encoding="utf-8"?><!--
-  ~ Copyright (C) 2021 The Android Open Source Project.
-  ~
-  ~ Licensed under the Apache License, Version 2.0 (the "License");
-  ~ you may not use this file except in compliance with the License.
-  ~ You may obtain a copy of the License at
-  ~
-  ~     http://www.apache.org/licenses/LICENSE-2.0
-  ~
-  ~ Unless required by applicable law or agreed to in writing, software
-  ~ distributed under the License is distributed on an "AS IS" BASIS,
-  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-  ~ See the License for the specific language governing permissions and
-  ~ limitations under the License.
-  -->
+<?xml version="1.0" encoding="utf-8"?>
+<!--<androidx.coordinatorlayout.widget.CoordinatorLayout-->
+<!--    xmlns:android="http://schemas.android.com/apk/res/android"-->
+<!--    xmlns:app="http://schemas.android.com/apk/res-auto"-->
+<!--    xmlns:tools="http://schemas.android.com/tools"-->
+<!--    android:layout_width="match_parent"-->
+<!--    android:layout_height="match_parent"-->
+<!--    tools:context=".MainActivity">-->
+
 <androidx.constraintlayout.widget.ConstraintLayout
+    android:id="@+id/constraintLayout"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#ECECEC"
     tools:context=".MainActivity">
+
+    <!--        <com.google.android.material.bottomnavigation.BottomNavigationView-->
+    <!--            android:id="@+id/bottomNavigationView"-->
+    <!--            android:background="@color/white"-->
+    <!--            app:itemBackground="@color/white"-->
+    <!--            android:layout_width="match_parent"-->
+    <!--            android:layout_height="wrap_content"-->
+    <!--            app:layout_constraintBottom_toBottomOf="parent"-->
+    <!--            app:layout_constraintEnd_toEndOf="parent"-->
+    <!--            app:layout_constraintStart_toStartOf="parent"-->
+    <!--            app:menu="@menu/bottom_menu"/>-->
+    <!-- Toolbar at the top of the layout -->
+<!--    <androidx.appcompat.widget.Toolbar-->
+<!--        android:id="@+id/toolbar"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="?attr/actionBarSize"-->
+<!--        android:background="?attr/colorPrimaryDark"-->
+<!--        app:layout_constraintTop_toTopOf="parent"-->
+<!--        app:layout_constraintLeft_toLeftOf="parent"-->
+<!--        app:layout_constraintRight_toRightOf="parent"-->
+<!--        app:popupTheme="@style/ThemeOverlay.AppCompat.Dark" />-->
+
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/nav_host_fragment"
+        android:name="androidx.navigation.fragment.NavHostFragment"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:defaultNavHost="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:navGraph="@navigation/nav_graph" />
+
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent">
 
         <com.google.android.material.bottomnavigation.BottomNavigationView
             android:id="@+id/bottomNavigationView"
-            android:background="@color/white"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            app:itemTextColor="@color/white"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:menu="@menu/bottom_menu"/>
+            app:menu="@menu/bottom_menu"
+            app:itemBackground="@color/black"
+            app:itemIconTint="@color/calendar_gray"
+            android:layout_alignParentBottom="true"
+            android:clipChildren="false"
+            app:fabCradleVerticalOffset="50dp"
+            app:layout_anchor="@id/bottom_app_bar">
+            <!--                        <com.google.android.material.floatingactionbutton.FloatingActionButton-->
+            <!--                            android:id="@+id/floatingActionButton"-->
+            <!--                            android:layout_width="46dp"-->
+            <!--                            android:layout_height="46dp"-->
+            <!--                            android:layout_marginTop="2dp"-->
+            <!--                            app:borderWidth="1dp"-->
+            <!--                            android:backgroundTint="@color/black"-->
+            <!--                            app:backgroundTint="@color/white"-->
+            <!--                            android:contentDescription="@string/add_new_item"-->
+            <!--                            android:src="@android:drawable/ic_input_add"-->
+            <!--                            app:tint="@android:color/white"-->
+            <!--                            app:elevation="6dp"-->
+            <!--                            android:scaleType="center"-->
+            <!--                            android:layout_gravity="center"-->
+            <!--                            />-->
+        </com.google.android.material.bottomnavigation.BottomNavigationView>
 
-        <androidx.fragment.app.FragmentContainerView
-            android:id="@+id/nav_host_fragment"
-            android:name="androidx.navigation.fragment.NavHostFragment"
-            android:layout_width="0dp"
+        <com.google.android.material.bottomappbar.BottomAppBar
+            android:id="@+id/bottom_app_bar"
+            android:layout_width="match_parent"
             android:layout_height="0dp"
-            app:defaultNavHost="true"
-            app:layout_constraintBottom_toTopOf="@+id/bottomNavigationView"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:navGraph="@navigation/nav_graph" />
+            app:fabCradleVerticalOffset="50dp"
+            android:layout_gravity="bottom"
+            app:backgroundTint="#00FFFFFF" />
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
+    <!--                <androidx.fragment.app.FragmentContainerView-->
+    <!--                    android:id="@+id/nav_host_fragment"-->
+    <!--                    android:name="androidx.navigation.fragment.NavHostFragment"-->
+    <!--                    android:layout_width="0dp"-->
+    <!--                    android:layout_height="0dp"-->
+    <!--                    app:defaultNavHost="true"-->
+    <!--                    app:layout_constraintEnd_toEndOf="parent"-->
+    <!--                    app:layout_constraintStart_toStartOf="parent"-->
+    <!--                    app:layout_constraintTop_toTopOf="parent"-->
+    <!--                    app:layout_constraintBottom_toTopOf="@id/bottomNavigationView"-->
+    <!--                    app:navGraph="@navigation/nav_graph" />-->
+
+    <!--                <com.google.android.material.bottomnavigation.BottomNavigationView-->
+    <!--                    android:id="@+id/bottomNavigationView"-->
+    <!--                    android:layout_width="match_parent"-->
+    <!--                    android:layout_height="56dp"-->
+    <!--                    android:layout_alignParentBottom="true"-->
+    <!--                    app:labelVisibilityMode="unlabeled"-->
+    <!--                    android:background="?android:attr/windowBackground"-->
+    <!--                    app:itemTextColor="@android:color/black"-->
+    <!--                    android:clipChildren="false"-->
+    <!--                    app:layout_constraintStart_toStartOf="parent"-->
+    <!--                    app:layout_constraintEnd_toEndOf="parent"-->
+    <!--                    app:layout_constraintBottom_toBottomOf="parent"-->
+    <!--                    app:menu="@menu/bottom_menu">-->
+
+    <!--                        <com.google.android.material.floatingactionbutton.FloatingActionButton-->
+    <!--                            android:id="@+id/fab"-->
+    <!--                            android:layout_width="56dp"-->
+    <!--                            android:layout_height="56dp"-->
+    <!--                            android:layout_gravity="center"-->
+    <!--                            android:layout_marginBottom="8dp"-->
+    <!--                            app:elevation="6dp"-->
+    <!--                            app:borderWidth="0dp"-->
+    <!--                            app:fabSize="mini"-->
+    <!--                            android:scaleType="center" />-->
+    <!--                </com.google.android.material.bottomnavigation.BottomNavigationView>-->
+
+    <!--                <ImageView-->
+    <!--                    android:id="@+id/iv_add"-->
+    <!--                    android:layout_width="60dp"-->
+    <!--                    android:layout_height="60dp"-->
+    <!--                    android:padding="15dp"-->
+    <!--                    android:src="@drawable/ic_add_white"-->
+    <!--                    android:background="@drawable/donation"-->
+    <!--                    app:layout_constraintStart_toStartOf="parent"-->
+    <!--                    android:contentDescription="@string/bottom_sheet_behavior"-->
+    <!--                    app:layout_constraintEnd_toEndOf="parent"-->
+    <!--                    android:layout_marginBottom="10dp"-->
+    <!--                    app:layout_constraintBottom_toBottomOf="parent"/>-->
 
 </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <!--        <com.google.android.material.bottomappbar.BottomAppBar-->
+    <!--            android:id="@+id/bottomAppBar"-->
+    <!--            android:layout_width="match_parent"-->
+    <!--            android:layout_height="wrap_content"-->
+    <!--            app:fabCradleMargin="6dp"-->
+    <!--            app:fabCradleRoundedCornerRadius="50dp"-->
+    <!--            android:layout_gravity="bottom">-->
+    <!--        <com.google.android.material.bottomnavigation.BottomNavigationView-->
+    <!--            android:id="@+id/bottomNavigationView"-->
+    <!--            android:layout_width="match_parent"-->
+    <!--            android:layout_height="match_parent"-->
+    <!--            android:layout_marginEnd="16dp"-->
+    <!--            android:background="@android:color/transparent"-->
+    <!--            app:menu="@menu/bottom_menu"/>-->
+    <!--        </com.google.android.material.bottomappbar.BottomAppBar>-->
+
+    <!--        <com.google.android.material.floatingactionbutton.FloatingActionButton-->
+    <!--            android:id="@+id/floatingActionButton"-->
+    <!--            android:layout_width="wrap_content"-->
+    <!--            android:layout_height="wrap_content"-->
+    <!--            android:contentDescription="@string/add_new_item"-->
+    <!--            android:src="@android:drawable/ic_input_add"-->
+    <!--            app:tint="@android:color/white"-->
+    <!--            app:layout_anchor="@id/bottomAppBar"/>-->
+    <!--</androidx.coordinatorlayout.widget.CoordinatorLayout>-->

@@ -47,7 +47,7 @@ class ItemListAdapter(private val onItemClicked: (Item) -> Unit) :
             val dateFormat = "dd/MM/yyyy"
             val sdf = SimpleDateFormat(dateFormat, Locale.UK)
             val dateString = sdf.format(item.date)
-            binding.groupDate.text = dateString
+//            binding.groupDate.text = dateString
         }
     }
 

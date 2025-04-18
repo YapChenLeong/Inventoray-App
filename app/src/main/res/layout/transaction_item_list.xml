@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="8dp"
+    android:background="@color/white"
+    android:descendantFocusability="blocksDescendants">
+
+    <ImageView
+        android:id="@+id/item_image_view"
+        android:layout_width="@dimen/_26sdp"
+        android:layout_height="@dimen/_26sdp"
+        android:contentDescription="@string/app_name"
+        android:scaleType="centerCrop"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:srcCompat="@drawable/food" />
+    <TextView
+        android:id="@+id/item_category"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        style="@style/Widget.Inventory.ListItemName"
+        android:fontFamily="sans-serif-medium"
+        app:layout_constraintStart_toEndOf="@+id/item_image_view"
+        app:layout_constraintTop_toTopOf="@+id/item_image_view"
+        app:layout_constraintWidth_percent="0.5"
+        android:layout_marginStart="@dimen/_5sdp"
+        tools:text="Food &amp; Drink" />
+    <TextView
+        android:id="@+id/item_category_detail"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:fontFamily="sans-serif"
+        android:textColor="@color/calendar_gray"
+        android:textSize="12sp"
+        app:layout_constraintStart_toEndOf="@+id/item_image_view"
+        app:layout_constraintBottom_toBottomOf="@+id/item_image_view"
+        app:layout_constraintWidth_percent="0.5"
+        android:layout_marginStart="@dimen/_5sdp"
+        tools:text="Chicken" />
+
+<!--    <TextView-->
+<!--        android:id="@+id/item_income_amount"-->
+<!--        android:layout_width="0dp"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        style="@style/Widget.Inventory.IncomePrice"-->
+<!--        android:fontFamily="sans-serif-medium"-->
+<!--        android:singleLine="true"-->
+<!--        android:gravity="end"-->
+<!--        app:layout_constraintStart_toEndOf="@+id/item_category"-->
+<!--        app:layout_constraintTop_toTopOf="@+id/item_category"-->
+<!--        app:layout_constraintBottom_toBottomOf="@+id/item_category_detail"-->
+<!--        app:layout_constraintEnd_toStartOf="@+id/item_expense_amount"-->
+<!--        app:layout_constraintWidth_percent="0.2"-->
+<!--        tools:text="RM124.99" />-->
+
+    <TextView
+        android:id="@+id/item_amount"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        style="@style/Widget.Inventory.ExpensePriceGreen"
+        android:layout_alignParentEnd="true"
+        android:fontFamily="sans-serif-medium"
+        android:singleLine="true"
+        android:gravity="end"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/item_category"
+        app:layout_constraintBottom_toBottomOf="@+id/item_category_detail"
+        app:layout_constraintWidth_percent="0.2"
+        tools:text="RM43333.99" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

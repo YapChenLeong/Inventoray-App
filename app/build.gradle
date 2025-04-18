@@ -46,18 +46,21 @@ android {
         viewBinding true
     }
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+//        sourceCompatibility JavaVersion.VERSION_1_8
+//        targetCompatibility JavaVersion.VERSION_1_8
     }
     kotlinOptions {
 //        jvmTarget = JavaVersion.VERSION_1_8.toString()
-        jvmTarget = '1.8'
+        jvmTarget = "17"
+//        jvmTarget = '1.8'
+        languageVersion = "1.7"
     }
     namespace 'com.example.inventory'
 }
 
 dependencies {
-
     implementation "androidx.appcompat:appcompat:$appcompat_version"
     implementation "androidx.constraintlayout:constraintlayout:$constraintlayout_version"
     implementation "androidx.core:core-ktx:$core_ktx_version"
@@ -78,4 +81,17 @@ dependencies {
     implementation "androidx.room:room-ktx:$room_version"
 
     implementation 'com.github.PhilJay:MPAndroidChart:v3.1.0'
+
+    implementation 'com.intuit.sdp:sdp-android:1.0.6'
+    implementation 'com.intuit.ssp:ssp-android:1.0.6'
+
+//    implementation 'com.android.support:appcompat-v7:28.0.0'
+//    implementation 'com.android.support:design:28.0.0'
+
+    implementation 'net.objecthunter:exp4j:0.4.8'
+
+    implementation 'org.threeten:threetenbp:1.5.0'
+    implementation 'com.github.swnishan:materialdatetimepicker:1.0.0'
+
+    
 }

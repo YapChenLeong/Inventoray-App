@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="8dp">
+
+    <TextView
+        android:id="@+id/item_percentage"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        style="@style/Widget.Inventory.PercentageTextView"
+        android:background="@drawable/percentage_background"
+        android:fontFamily="sans-serif"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintWidth_percent="0.14"
+        tools:text="100%" />
+
+    <TextView
+        android:id="@+id/item_country"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        style="@style/Widget.Inventory.ListItemPrice"
+        android:fontFamily="sans-serif-medium"
+        app:layout_constraintEnd_toStartOf="@+id/item_price"
+        app:layout_constraintStart_toEndOf="@+id/item_percentage"
+        app:layout_constraintTop_toTopOf="@+id/item_percentage"
+        app:layout_constraintBottom_toBottomOf="@+id/item_percentage"
+        app:layout_constraintWidth_percent="0.5"
+        tools:text="United State" />
+
+    <TextView
+        android:id="@+id/item_price"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        style="@style/Widget.Inventory.TotalPriceTextView"
+        android:layout_alignParentEnd="true"
+        android:fontFamily="sans-serif-medium"
+        android:textAlignment="center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintWidth_percent="0.3"
+        app:layout_constraintTop_toTopOf="@+id/item_country"
+        app:layout_constraintBottom_toBottomOf="@+id/item_country"
+        tools:text="1112331.00" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -39,9 +39,9 @@ internal class CalendarAdapter(
         fun bind(data: String, listData: List<Any>, localDate: LocalDate?) {
             dayOfMonth.text = data
             val childMembersAdapter = CalendarChildAdapter(data, listData, localDate)
-//            childView.layoutManager = LinearLayoutManager(itemView.context, LinearLayoutManager.HORIZONTAL,false)
+            childView.layoutManager = LinearLayoutManager(itemView.context, LinearLayoutManager.HORIZONTAL,false)
 //            childView.layoutManager = GridLayoutManager(itemView.context,4)
-//            childView.adapter = childMembersAdapter
+            childView.adapter = childMembersAdapter
         }
     }
 

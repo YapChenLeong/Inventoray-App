@@ -3,6 +3,7 @@ package Common
 import android.os.Build
 import androidx.annotation.RequiresApi
 import com.example.inventory.data.Item
+import com.example.inventory.data.TransactionListData
 import java.text.SimpleDateFormat
 import java.time.LocalDate
 import java.util.*
@@ -12,6 +13,7 @@ import kotlin.collections.ArrayList
 object Common {
     val VIEWTYPE_GROUP = 0
     val VIEWTYPE_ITEM = 1
+    val VIEWTPYE_NO_DATA = -1
 
 
     fun sortDate(list:MutableList<Item>): MutableList<Item> {
@@ -49,6 +51,35 @@ object Common {
         }
 
 
+        return listOfItems
+    }
+
+    @RequiresApi(Build.VERSION_CODES.O)
+    fun filterTransactionDate(currentDate: Calendar, list: List<TransactionListData>, localDate: LocalDate?): List<TransactionListData>{
+        val listOfItems : MutableList<TransactionListData> = mutableListOf()
+//        var a = currentDate[Calendar.YEAR]
+//        var b = currentDate[Calendar.MONTH]
+//        var c= currentDate[Calendar.DAY_OF_MONTH]
+//        var d= currentDate[Calendar.DAY_OF_YEAR]
+//        val dateFormat = "dd/MM/yyyy (EEE)"
+//        val sdf = SimpleDateFormat(dateFormat, Locale.UK)
+//        var currentDat = sdf.format(currentDate.time)
+        var item = Calendar.getInstance()
+
+        localDate?.let {
+            var localMonth = it.monthValue
+            var localYear = it.year
+
+            for( listOfData in list ) {
+                item.time = listOfData.dtUpdate
+                var itemMonth = item[Calendar.MONTH] + 1
+                var itemYear = item[Calendar.YEAR]
+
+                if (localYear == itemYear && localMonth == itemMonth) {
+                    listOfItems.add(listOfData)
+                }
+            }
+        }
         return listOfItems
     }
 
@@ -129,6 +160,12 @@ object Common {
         list[i].viewType = VIEWTYPE_ITEM
         newItemList.add(list[i])
         return newItemList
+    }
+
+    fun generateCurrentDateTime(): Date {
+        var defaultCalendar = Calendar.getInstance()
+
+        return defaultCalendar.time
     }
 
 

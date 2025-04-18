@@ -16,16 +16,15 @@
 
 package com.example.inventory.viewModels
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.asLiveData
-import androidx.lifecycle.viewModelScope
-import com.example.inventory.data.Item
-import com.example.inventory.data.ItemDao
+import android.util.Log
+import androidx.lifecycle.*
+import com.example.inventory.data.*
 import com.example.inventory.repository.InventoryRepository
 import kotlinx.coroutines.launch
+import java.lang.Exception
 import java.util.*
+import java.util.Observer
+import java.util.concurrent.atomic.AtomicBoolean
 
 /**
  * View Model to keep a reference to the Inventory repository and an up-to-date list of all items.
@@ -60,6 +59,8 @@ class InventoryViewModel(private val itemDao: ItemDao) : ViewModel() {
         return repository.getSingleItem(id).asLiveData()
 //        return itemDao.getItem(id).asLiveData() //without repo use this code
     }
+
+    var groupItem: LiveData<List<StatisticHeader>> = repository.getGroupCountryItem().asLiveData()
 
 
     /**#################################### UPDATE DATA  *####################################*/
@@ -191,6 +192,173 @@ class InventoryViewModel(private val itemDao: ItemDao) : ViewModel() {
         }
         return true
     }
+
+    var getSettingData: LiveData<List<SettingData>> = repository.getSettingData().asLiveData()// collect each item from the Flow, then convert any Flow to LiveData
+
+
+//    fun getSettingData(){
+//        viewModelScope.launch {
+//            repository.getSettingData()
+//        }
+//    }
+    fun insertSettingData(item : SettingData){
+        viewModelScope.launch {
+            repository.insertSettingData(item)
+        }
+    }
+
+    private val _insertionStatus = MutableLiveData<Boolean>()
+    val insertionStatus: LiveData<Boolean>
+        get() = _insertionStatus
+    fun autoInsertExpenseData(item : List<ExpenseData>){
+        viewModelScope.launch {
+            try {
+                repository.autoInsertExpenseData(item)
+                _insertionStatus.value = true
+            } catch (e:Exception){
+                // Handle any exceptions, such as database errors
+                _insertionStatus.value = false
+            }
+
+        }
+    }
+
+    private val _insertionIncomeStatus = MutableLiveData<Boolean>()
+    val insertionIncomeStatus: LiveData<Boolean>
+        get() = _insertionIncomeStatus
+    fun autoInsertIncomeData(item : List<IncomeData>){
+        viewModelScope.launch {
+            try {
+                repository.autoInsertIncomeData(item)
+                _insertionIncomeStatus.value = true
+            } catch (e:Exception){
+                // Handle any exceptions, such as database errors
+                _insertionIncomeStatus.value = false
+            }
+
+        }
+    }
+
+    /**
+     * Category Module
+     * */
+    var getExpenseData: LiveData<List<ExpenseDataWithSubExpense?>> = repository.getExpenseData().asLiveData()// collect each item from the Flow, then convert any Flow to LiveData
+    var getIncomeData: LiveData<List<IncomeDataWithSubIncome?>> = repository.getIncomeData().asLiveData()// collect each item from the Flow, then convert any Flow to LiveData
+
+    private val _getAllExpenseData = SingleEventLiveData<Boolean>()
+    val getAllExpenseData: LiveData<Boolean> get() = _getAllExpenseData
+    fun getAllExpenseData(): LiveData<List<ExpenseData>> {
+            return repository.getAllExpenseData().asLiveData()
+            _getAllExpenseData.value = true
+    }
+//    var getAllExpenseData: LiveData<List<ExpenseData>> = repository.getAllExpenseData().asLiveData()
+
+    fun isEntryValid2(itemName: String): Boolean {
+        if (itemName.isBlank()) {
+            return false
+        }
+        return true
+    }
+
+    fun addNewCategory(image: Int, type: String, itemName: String, dtCreate:Date, dtUpdate:Date, orderIndex: Int) {
+        val newItem = getNewItemEntry(ExpenseData.generateSysGuid(), image, type, itemName,"",dtCreate,dtUpdate,orderIndex)
+        insertCategory(newItem)
+    }
+    private fun getNewItemEntry(itemId: String, image: Int, type: String, desc1: String, desc2: String, dtCreate: Date, dtUpdate: Date, orderIndex: Int): ExpenseData {
+        return ExpenseData(
+            id = itemId,
+            imgResourceID = image,
+            type = type,
+            description01 = desc1,
+            description02 = desc2,
+            dtCreate = dtCreate,
+            dtUpdate = dtUpdate,
+            orderIndex = orderIndex
+        )
+    }
+    private fun insertCategory(item: ExpenseData) {
+        viewModelScope.launch {
+            repository.insertNewCategory(item)
+//            itemDao.insert(item) //without repo use this code
+        }
+    }
+
+    fun addNewSubCategory(expenseId: String, subItemName: String, dtCreate:Date, dtUpdate:Date) {
+        val newItem = getNewSubItemEntry(SubExpenseData.generateSysGuid(), expenseId, subItemName, "",dtCreate,dtUpdate)
+        insertSubCategory(newItem)
+    }
+    private fun getNewSubItemEntry(subId: String, expenseId: String, desc1: String, desc2: String, dtCreate: Date, dtUpdate: Date): SubExpenseData {
+        return SubExpenseData(
+            id = subId,
+            expenseId = expenseId,
+            description01 = desc1,
+            description02 = desc2,
+            dtCreate = dtCreate,
+            dtUpdate = dtUpdate
+        )
+    }
+
+    private fun insertSubCategory(item: SubExpenseData){
+        viewModelScope.launch {
+            repository.insertNewSubCategory(item)
+        }
+    }
+
+    fun updateExpenseItem(expenseId: String, dtUpdate: Date, position: Int) {
+        viewModelScope.launch {
+            repository.updateExpenseItem(expenseId, dtUpdate, position)
+        }
+    }
+
+    private val _updateExpenseListIndex = SingleEventLiveData<Boolean>()
+    val updateExpenseListIndexBoolean: LiveData<Boolean> get() = _updateExpenseListIndex
+    fun updateExpenseListIndex(items: List<ExpenseData>) {
+        viewModelScope.launch {
+            try {
+                repository.updateExpenseListIndex(items)
+                _updateExpenseListIndex.value = true
+            }catch (e:Exception){
+                _updateExpenseListIndex.value = false
+            }
+        }
+    }
+
+    private val _deleteSuccess = MutableLiveData<Boolean>()
+    val deleteSuccess: LiveData<Boolean>
+        get() = _deleteSuccess
+
+    fun deleteSubCategoryData(susExpendId: String) {
+        viewModelScope.launch {
+            try {
+                repository.deleteSubCategoryData(susExpendId)
+                _deleteSuccess.value = true
+            } catch (e:Exception){
+                _deleteSuccess.value = false
+            }
+        }
+    }
+
+    var allSubCategoryData: LiveData<List<SubCategoryData>> = repository.getAllSubCategory().asLiveData()// collect each item from the Flow, then convert any Flow to LiveData
+
+    fun getSubCategoryData(expenseId: String): LiveData<List<SubCategoryData?>> {
+        return repository.getSubCategoryData(expenseId).asLiveData()
+//        return itemDao.getItem(id).asLiveData() //without repo use this code
+    }
+
+    private val _deleteExpenseAndSubItems = SingleEventLiveData<Boolean>()
+    val deleteExpenseAndSubItems: LiveData<Boolean> get() = _deleteExpenseAndSubItems
+    fun deleteExpenseAndSubItems(expenseId: String){
+        viewModelScope.launch {
+            try {
+                repository.deleteExpenseAndSubItems(expenseId)
+                _deleteExpenseAndSubItems.value = true
+            }catch (e: Exception){
+                val error = e
+                Log.i("error delete", e.toString())
+                _deleteExpenseAndSubItems.value = false
+            }
+        }
+    }
 }
 
 /**
@@ -210,6 +378,23 @@ class InventoryViewModelFactory(private val itemDao: ItemDao) : ViewModelProvide
             return InventoryViewModel(itemDao) as T
         }
         throw IllegalArgumentException("Unknown ViewModel class")
+    }
+}
+
+class SingleEventLiveData<T> : MutableLiveData<T>() {
+    private val pending = AtomicBoolean(false)
+
+    override fun observe(owner: LifecycleOwner, observer: androidx.lifecycle.Observer<in T>) {
+        super.observe(owner) { value ->
+            if (pending.compareAndSet(true, false)) {
+                observer.onChanged(value)
+            }
+        }
+    }
+
+    override fun setValue(value: T?) {
+        pending.set(true)
+        super.setValue(value)
     }
 }
 

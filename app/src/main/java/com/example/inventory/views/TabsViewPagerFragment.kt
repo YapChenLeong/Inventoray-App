@@ -36,6 +36,7 @@ class TabsViewPagerFragment : Fragment() {
         val fragmentList = arrayListOf<Fragment>(
             ItemListFragment(),
             CalendarItemFragment()
+
         )
 
 // !! Due to crash issue when rotate app using activity’s supportFragmentManager, change to use childFragmentManager
@@ -54,11 +55,11 @@ class TabsViewPagerFragment : Fragment() {
             when(position){
                 0 -> {
                     tab.text= "Data"
-                    tab.setIcon(R.drawable.ic_baseline_show_chart_24)
+//                    tab.setIcon(R.drawable.ic_baseline_show_chart_24)
                 }
                 1 -> {
                     tab.text= "Calendar"
-                    tab.setIcon(R.drawable.ic_baseline_calendar_today_24)
+//                    tab.setIcon(R.drawable.ic_baseline_calendar_today_24)
                 }
             }
         }.attach()

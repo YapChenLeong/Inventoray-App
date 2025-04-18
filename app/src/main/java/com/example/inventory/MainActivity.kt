@@ -1,3 +1,4 @@
+
 /*
  * Copyright (C) 2021 The Android Open Source Project.
  *
@@ -16,16 +17,14 @@
 package com.example.inventory
 
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavController
-import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
-import androidx.navigation.ui.NavigationUI.navigateUp
 import androidx.navigation.ui.NavigationUI.setupActionBarWithNavController
-import androidx.navigation.ui.NavigationUI.setupWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.example.inventory.databinding.ActivityMainBinding
-import com.google.android.material.bottomnavigation.BottomNavigationItemView
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class MainActivity : AppCompatActivity(R.layout.activity_main) {
@@ -37,19 +36,22 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-    val bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottomNavigationView)
-    //        supportActionBar?.hide()
+//        binding.bottomAppBar.isEnabled = false
+        val bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottomNavigationView)
+        //        supportActionBar?.hide()
         // Retrieve NavController from the NavHostFragment
         val navHostFragment = supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
         navController = navHostFragment.navController
 //        // Set up the action bar for use with the NavController
         setupActionBarWithNavController(this, navController)
-
-
         bottomNavigationView.setupWithNavController(navController)
 
+        if (supportActionBar != null) {
+            supportActionBar!!.hide()
+        }
 //        setUpTabs()
     }
+
 
     private fun setUpTabs(){
 //        var viewPager2 = findViewById<ViewPager2>(R.id.viewPager2)

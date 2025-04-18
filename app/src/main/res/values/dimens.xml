@@ -19,4 +19,9 @@
     <dimen name="margin_between_elements">8dp</dimen>
 
     <dimen name="padding">16dp</dimen>
+
+    <dimen name="margin_top_header">10dp</dimen> <!-- Adjust the value as needed -->
+    <dimen name="grid_spacing">8dp</dimen>
+
+    <dimen name="no_action_bar_elevation_material">0dp</dimen>
 </resources>

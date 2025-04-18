@@ -1,12 +1,10 @@
 Inventory - Solution Code
 ==================================
-
 Solution code for Android Basics in Kotlin.
 Codelab: Android Jetpack - Room.
 
 Introduction
 ------------
-
 This app is an Inventory tracking app. Demos how to add, update, sell, and delete items from the local database. 
 This app demonstrated
 the use of Android Jetpack component [Room](https://developer.android.com/training/data-storage/room) database.  
@@ -20,7 +18,15 @@ with the SafeArgs plugin for parameter passing between fragments.
 
 Pre-requisites
 --------------
-
+1. Java JDK Installation 8 or 11, or 17 (For Mac chip, select ARM)
+2. Add in your java path in .zshrc
+3. Install Android Studio IDE
+4. After install android Studio 
+   a) open IDE setting => command + , ,
+   - Plugins -> Install Atom Material Icons
+   - 
+   b) open IDE project structure => command ;
+5. 
 You need to know:
 - How to create and use fragments.
 - How to navigate between fragments, and use safeArgs to pass data between fragments.
@@ -32,5 +38,6 @@ You need to know:
 
 Getting Started
 ---------------
-
 1. Download and run the app.
+
+https://codytech.odoo.com/odoo/project/1/tasks

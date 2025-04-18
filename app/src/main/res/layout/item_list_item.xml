@@ -5,20 +5,46 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:padding="8dp"
+    android:background="@color/white"
     android:descendantFocusability="blocksDescendants">
 
     <TextView
         android:id="@+id/item_name"
+        android:paddingLeft="5dp"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         style="@style/Widget.Inventory.ListItemName"
         android:fontFamily="sans-serif"
-        app:layout_constraintEnd_toStartOf="@+id/item_price"
+        android:singleLine="true"
+        app:layout_constraintEnd_toStartOf="@+id/item_country"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintWidth_percent="0.4"
-        tools:text="Cogs and Widgets" />
-
+        app:layout_constraintWidth_percent="0.3"
+        tools:text="Name of stocks" />
+    <TextView
+        android:id="@+id/label_item_unit"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:paddingLeft="5dp"
+        android:fontFamily="sans-serif"
+        android:textColor="@color/calendar_gray"
+        android:textSize="12sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/item_name"
+        android:text="Unit:" />
+    <TextView
+        android:id="@+id/item_unit"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:paddingLeft="3dp"
+        android:fontFamily="sans-serif"
+        android:textColor="@color/calendar_gray"
+        android:textSize="12sp"
+        app:layout_constraintStart_toEndOf="@+id/label_item_unit"
+        app:layout_constraintTop_toBottomOf="@+id/item_name"
+        app:layout_constraintWidth_percent="0.1"
+        android:text="3"
+        tools:text="3" />
 <!--    <TextView-->
 <!--        android:id="@+id/item_name"-->
 <!--        style="@style/Widget.Inventory.ListItemTextView"-->
@@ -29,17 +55,29 @@
 <!--        app:layout_constraintStart_toStartOf="parent"-->
 <!--        app:layout_constraintTop_toTopOf="parent"-->
 <!--        tools:text="Cogs and Widgets" />-->
-
     <TextView
-        android:id="@+id/item_price"
+        android:id="@+id/item_country"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         style="@style/Widget.Inventory.ListItemPrice"
         android:layout_below="@+id/item_name"
         android:fontFamily="sans-serif-medium"
-        android:textAlignment="center"
-        app:layout_constraintEnd_toStartOf="@+id/item_quantity"
+        app:layout_constraintEnd_toStartOf="@+id/item_price"
         app:layout_constraintStart_toEndOf="@+id/item_name"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintWidth_percent="0.1"
+        android:text="USA"
+        tools:text="USA" />
+    <TextView
+        android:id="@+id/item_price"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        style="@style/Widget.Inventory.ListItemPrice"
+        android:fontFamily="sans-serif-medium"
+        android:singleLine="true"
+        android:gravity="end"
+        app:layout_constraintEnd_toStartOf="@+id/item_quantity"
+        app:layout_constraintStart_toEndOf="@+id/item_country"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintWidth_percent="0.3"
         tools:text="$4.99" />
@@ -64,13 +102,14 @@
         style="@style/Widget.Inventory.ListItemQuantity"
         android:layout_alignParentEnd="true"
         android:fontFamily="sans-serif-medium"
-        android:textAlignment="center"
+        android:singleLine="true"
+        android:gravity="end"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintWidth_percent="0.3"
         app:layout_constraintTop_toTopOf="parent"
         tools:text="3" />
 
-<!--    <TextView-->
+    <!--    <TextView-->
 <!--        android:id="@+id/item_quantity"-->
 <!--        style="@style/Widget.Inventory.ListItemTextView"-->
 <!--        android:layout_width="80dp"-->

@@ -24,10 +24,17 @@
     <string name="item_date_req">Today</string>
     <string name="save_action">Save</string>
     <string name="item_detail_fragment_title">Item Details</string>
-    <string name="add_fragment_title">Add Item</string>
-    <string name="edit_fragment_title">Edit Item</string>
+    <string name="item_detail_fragment_title2">Item - %1$s</string>
+    <string name="add_fragment_title">Add Stock</string>
+    <string name="add_category_title">Add New Category</string>
+    <string name="add_exp_category">New Expenses Category</string>
+    <string name="add_subcategory_title">Add New Subcategory</string>
+    <string name="adjust_category">Category Settings</string>
+    <string name="modify_subcategory">Modify Subcategory</string>
+    <string name="edit_fragment_title">Edit Stock</string>
     <string name="price">Price</string>
-    <string name="quantity_in_stock">Quantity\nIn Stock</string>
+    <string name="last_purchase">Purchased</string>
+    <string name="stock_changes">Changes</string>
     <string name="item">Item</string>
     <string name="delete">Delete</string>
     <string name="delete_question">Are you sure you want to delete?</string>
@@ -47,6 +54,8 @@
         <item>United State</item>
         <item>China</item>
         <item>Malaysia</item>
+        <item>Taiwan</item>
+        <item>Singapore</item>
     </string-array>
 
     <!-- OnBoarding Screen -->
@@ -57,9 +66,27 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
-<!--  Menu Fragment  -->
+
+    <!--  Menu Fragment  -->
     <string name="statistic">Statistic</string>
-<!-- Calendar View -->
+    <string name="profile">Profile</string>
+    <!-- Calendar View -->
     <string name="back"><![CDATA[<-]]></string>
     <string name="forward"><![CDATA[->]]></string>
+
+    <!--  Expense Items  -->
+    <string name="item1">Foods</string>
+    <string name="item2">Movie</string>
+    <string name="item3">Medical</string>
+    <string name="item4">Sport</string>
+    <string name="item5">Beauty</string>
+    <string name="item6">Transport</string>
+    <string name="item7">Travel</string>
+    <string name="item8">Nutrition</string>
+    <string name="item9">Skincare</string>
+    <string name="item10">Pet</string>
+    <string name="item11">Donation</string>
+    <string name="item12">Utilities</string>
+    <string name="addCategory">Add Category</string>
+    <string name="adjustCategory">Adjust</string>
 </resources>

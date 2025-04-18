@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:padding="10dp"
+    tools:context=".views.ExpenseCategorySettingFragment2">
+
+    <ImageView
+        android:id="@+id/iconRemove"
+        android:layout_width="@dimen/_20sdp"
+        android:layout_height="@dimen/_20sdp"
+        android:contentDescription="@string/app_name"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/iconView"
+        app:layout_constraintBottom_toBottomOf="@+id/iconView"
+        android:src="@drawable/ic_red_remove_circle_24" />
+
+    <ImageView
+        android:id="@+id/iconView"
+        android:layout_width="@dimen/_30sdp"
+        android:layout_height="@dimen/_30sdp"
+        android:contentDescription="@string/app_name"
+        android:singleLine="true"
+        android:layout_marginLeft="@dimen/_15sdp"
+        app:layout_constraintStart_toEndOf="@+id/iconRemove"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:srcCompat="@drawable/food" />
+
+    <TextView
+        android:id="@+id/expenseCategoryName"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        style="@style/Widget.Inventory.ListItemName"
+        android:fontFamily="sans-serif-medium"
+        android:singleLine="true"
+        android:layout_marginLeft="@dimen/_10sdp"
+        android:layout_marginRight="@dimen/_10sdp"
+        app:layout_constraintEnd_toStartOf="@+id/imageEdit"
+        app:layout_constraintStart_toEndOf="@+id/iconView"
+        app:layout_constraintTop_toTopOf="@+id/iconView"
+        tools:text="Expenses Item" />
+
+    <TextView
+        android:id="@+id/expenseSubCategoryName"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:textColor="@color/calendar_gray"
+        android:textSize="12sp"
+        style="@style/Widget.Inventory.ListItemName"
+        android:fontFamily="sans-serif-medium"
+        android:layout_marginLeft="@dimen/_10sdp"
+        android:layout_marginRight="@dimen/_10sdp"
+        app:layout_constraintEnd_toStartOf="@+id/imageEdit"
+        app:layout_constraintStart_toEndOf="@+id/iconView"
+        app:layout_constraintTop_toBottomOf="@+id/expenseCategoryName"
+        app:layout_constraintBottom_toBottomOf="@+id/iconView"
+        tools:text="Breads, Burger" />
+
+    <ImageView
+        android:id="@+id/imageEdit"
+        android:layout_width="@dimen/_20sdp"
+        android:layout_height="@dimen/_20sdp"
+        android:layout_alignParentEnd="true"
+        app:layout_constraintEnd_toStartOf="@id/imageDrag"
+        android:layout_marginRight="@dimen/_20sdp"
+        app:layout_constraintTop_toTopOf="@+id/expenseCategoryName"
+        app:layout_constraintBottom_toBottomOf="@+id/expenseSubCategoryName"
+        android:src="@drawable/ic_black_edit_note"/>
+
+    <ImageView
+        android:id="@+id/imageDrag"
+        android:layout_width="@dimen/_20sdp"
+        android:layout_height="@dimen/_20sdp"
+        android:layout_alignParentEnd="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginRight="@dimen/_10sdp"
+        app:layout_constraintTop_toTopOf="@+id/imageEdit"
+        app:layout_constraintBottom_toBottomOf="@+id/imageEdit"
+        android:src="@drawable/ic_black_drag_indicator_24"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

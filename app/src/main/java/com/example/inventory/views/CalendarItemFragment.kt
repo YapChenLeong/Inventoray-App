@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.annotation.RequiresApi
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.recyclerview.widget.DividerItemDecoration
@@ -53,6 +54,13 @@ class CalendarItemFragment : Fragment(), CalendarAdapter.OnItemListener {
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        (activity as AppCompatActivity?)?.supportActionBar?.apply {
+            show()
+            setDisplayShowCustomEnabled(false)
+            setDisplayHomeAsUpEnabled(false)
+            setDisplayShowTitleEnabled(true)
+        }
 
         viewModel.allItems.observe(this.viewLifecycleOwner) { items ->
             val currentDate = Calendar.getInstance()
@@ -233,28 +241,5 @@ class CalendarItemFragment : Fragment(), CalendarAdapter.OnItemListener {
             val message = "Selected Date " + dayText + " " + monthYearFromDate(selectedDate!!)
             Toast.makeText(activity, message, Toast.LENGTH_LONG).show()
         }
-    }
-
-    private fun combineTransactionData(items : List<Item>) : List<Any> {
-        val list : MutableList<Any> = mutableListOf()
-        var date : Date? = null
-        for (item in items) {
-            if (date == null || !isSameDay(date,item.date!!)) {
-                list.add(Header(item.date!!))
-                date = item.date
-            }
-            list.add(item)
-        }
-        return list
-    }
-
-    private fun isSameDay(date1 : Date, date2 : Date) : Boolean{
-        val cal1 = Calendar.getInstance()
-        val cal2 = Calendar.getInstance()
-        cal1.time = date1
-        cal2.time = date2
-        var a = cal1[Calendar.MONTH] + 1
-
-        return cal1[Calendar.YEAR] == cal2[Calendar.YEAR] && cal1[Calendar.DAY_OF_YEAR] == cal2[Calendar.DAY_OF_YEAR]
     }
 }

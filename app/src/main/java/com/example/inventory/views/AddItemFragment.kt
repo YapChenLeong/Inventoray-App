@@ -26,6 +26,7 @@ import android.view.Window
 import android.view.inputmethod.InputMethodManager
 import android.widget.ArrayAdapter
 import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
@@ -37,6 +38,9 @@ import com.example.inventory.data.Item
 import com.example.inventory.databinding.FragmentAddItemBinding
 import com.example.inventory.viewModels.InventoryViewModel
 import com.example.inventory.viewModels.InventoryViewModelFactory
+import com.google.android.material.bottomappbar.BottomAppBar
+import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 import java.text.SimpleDateFormat
 import java.time.LocalDate
 import java.util.*
@@ -73,7 +77,6 @@ class AddItemFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         _binding = FragmentAddItemBinding.inflate(inflater, container, false)
-
         val country = resources.getStringArray(R.array.countries)
         val arrayAdapter = ArrayAdapter(requireContext(), R.layout.dropdown_country, country)
         binding.itemCountry.setAdapter(arrayAdapter)
@@ -159,6 +162,20 @@ class AddItemFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        (activity as AppCompatActivity?)?.supportActionBar?.apply {
+            show()
+            setDisplayShowCustomEnabled(false)
+            setDisplayShowTitleEnabled(true)
+        }
+
+        val bottomNavigationView = requireActivity().findViewById<BottomNavigationView>(R.id.bottomNavigationView)
+//        val bottomMenuBar = requireActivity().findViewById<BottomAppBar>(R.id.bottomAppBar)
+//        val bottomButton = requireActivity().findViewById<FloatingActionButton>(R.id.floatingActionButton)
+
+        bottomNavigationView.visibility = View.GONE
+//        bottomMenuBar.visibility = View.GONE
+//        bottomButton.visibility = View.GONE
+
         var defaultCalendar = Calendar.getInstance()
         val year: Int = defaultCalendar.get(Calendar.YEAR)
         val month: Int = defaultCalendar.get(Calendar.MONTH)
@@ -232,9 +249,9 @@ class AddItemFragment : Fragment() {
 
 
 
-        binding.itemDate.setOnClickListener {
-            context?.let { it -> DatePickerDialog(it, datePicker, newCalendar.get(Calendar.YEAR),  newCalendar.get(Calendar.MONTH),  newCalendar.get(Calendar.DAY_OF_MONTH)).show() }
-        }
+            binding.itemDate.setOnClickListener {
+                context?.let { it -> DatePickerDialog(it, datePicker, newCalendar.get(Calendar.YEAR),  newCalendar.get(Calendar.MONTH),  newCalendar.get(Calendar.DAY_OF_MONTH)).show() }
+            }
 
 
         //slider picker
@@ -306,6 +323,11 @@ class AddItemFragment : Fragment() {
                 InputMethodManager
         inputMethodManager.hideSoftInputFromWindow(requireActivity().currentFocus?.windowToken, 0)
         _binding = null
+    }
+
+    override fun onResume() {
+        super.onResume()
+        (activity as AppCompatActivity?)!!.supportActionBar!!.show()
     }
 }
 

@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:backgroundTint="@color/white"
+    tools:context=".views.ProfileFragment">
+
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <Button
+        android:id="@+id/button_7"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:text="7"
+        android:background="@drawable/border_button"
+        app:layout_constraintWidth_percent="0.25"
+        />
+    <Button
+        android:id="@+id/button_8"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="8"
+        android:background="@drawable/border_button"
+        app:layout_constraintWidth_percent="0.25"
+        app:layout_constraintStart_toEndOf="@+id/button_7"
+        app:layout_constraintTop_toTopOf="@id/button_7"
+        app:layout_constraintBottom_toBottomOf="@id/button_7"/>
+    <Button
+        android:id="@+id/button_9"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="9"
+        android:background="@drawable/border_button"
+        app:layout_constraintWidth_percent="0.25"
+        app:layout_constraintStart_toEndOf="@+id/button_8"
+        app:layout_constraintTop_toTopOf="@id/button_8"
+        app:layout_constraintBottom_toBottomOf="@id/button_8"
+        />
+
+       <Button
+           android:id="@+id/expand"
+           android:layout_width="0dp"
+           android:layout_height="wrap_content"
+           app:layout_constraintTop_toBottomOf="@+id/button_7"
+           app:layout_constraintStart_toStartOf="parent"
+           android:text="EXPAND"
+           android:background="@drawable/border_button"
+           app:layout_constraintWidth_percent="0.25"
+
+           />
+
+        <ImageButton
+            android:id="@+id/imageButton"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:src="@drawable/ic_grey_done_24"
+            app:layout_constraintTop_toTopOf="@+id/expand"
+            app:layout_constraintBottom_toBottomOf="@+id/expand"
+            app:layout_constraintStart_toEndOf="@+id/expand"
+            android:background="@drawable/border_button"
+            app:layout_constraintWidth_percent="0.25"
+            />
+
+        <ImageButton
+            android:id="@+id/imageButton2"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:src="@drawable/ic_grey_backspace_24"
+            app:layout_constraintTop_toTopOf="@+id/imageButton"
+            app:layout_constraintBottom_toBottomOf="@+id/imageButton"
+            app:layout_constraintStart_toEndOf="@+id/imageButton"
+            android:background="@drawable/border_button"
+            app:layout_constraintWidth_percent="0.25"
+            />
+
+
+        <Button
+            android:id="@+id/collapse"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/expand"
+            app:layout_constraintStart_toStartOf="parent"
+            android:text="COLLAPSE"
+            />
+
+    <FrameLayout
+        android:id="@+id/myImageButtonContainer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/collapse"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <ImageButton
+            android:id="@+id/myImageButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_grey_done_24"
+            android:background="?android:attr/selectableItemBackground"
+            android:contentDescription="Description for accessibility"/>
+
+        <TextView
+            android:id="@+id/textInsideImageButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="My Text"
+            android:layout_gravity="center"/>
+
+    </FrameLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+
+<include layout="@layout/input_bottom_sheet" />
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
